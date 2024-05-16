@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="?attr/materialCardViewElevatedStyle"
+    app:contentPadding="20dp"
+    app:cardCornerRadius="3dp"
+    android:layout_marginBottom="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/dotMenuMore"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/dot_menu_more_2_svgrepo_com"
+            app:tint="@color/material_dynamic_neutral90"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/titleProject"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Dashboard Design For Anyone"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColor="@color/md_theme_primary"
+            android:gravity="start"
+            android:layout_marginEnd="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/assignedByLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Assigned by "
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/titleProject"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/assignedByName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Udin Knalpot"
+            android:textColor="@color/md_theme_onSurface"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/titleProject"
+            app:layout_constraintStart_toEndOf="@id/assignedByLabel"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/taskImage"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/toon_5"
+            app:civ_border_color="@color/md_theme_onSurface"
+            app:civ_border_width="1dp"
+            app:layout_constraintBottom_toBottomOf="@id/assignedByName"
+            app:layout_constraintTop_toTopOf="@id/assignedByName"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
