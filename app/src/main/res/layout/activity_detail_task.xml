@@ -41,10 +41,11 @@
             android:layout_weight="1" />
 
         <ImageView
-            android:id="@+id/addButton"
+            android:id="@+id/buttonEditTask"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/pen_svgrepo_com" />
+            android:src="@drawable/pen_svgrepo_com"
+            android:visibility="invisible"/>
 
     </LinearLayout>
 
@@ -54,7 +55,6 @@
         android:layout_height="wrap_content"
         android:text="High"
         android:textColor="#FF8A80"
-        android:backgroundTint="#330000"
         app:chipCornerRadius="20dp"
         app:chipStartPadding="10dp"
         app:chipEndPadding="10dp"
@@ -89,6 +89,7 @@
             android:layout_height="wrap_content"
             android:text="Created by : " />
         <TextView
+            android:id="@+id/author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/md_theme_onSurface"
@@ -98,6 +99,7 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/avatar"
             android:layout_width="32dp"
             android:layout_height="32dp"
             app:civ_border_width="1dp"
@@ -126,21 +128,20 @@
             android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/addTask"
+            android:id="@+id/addToDoList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:text="Add Task"
+            android:text="Add To Do List"
             android:textColor="@color/md_theme_primary"
             android:textStyle="bold"/>
 
     </LinearLayout>
 
-    <com.google.android.material.checkbox.MaterialCheckBox
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewTodoList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Making Design for Hero Section"
-        android:paddingStart="5dp"
-        style="@style/Widget.Material3.CompoundButton.CheckBox"/>
+        android:layout_height="wrap_content" />
+
 
 </LinearLayout>

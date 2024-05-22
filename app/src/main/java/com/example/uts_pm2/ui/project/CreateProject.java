@@ -3,160 +3,86 @@ package com.example.uts_pm2.ui.project;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import com.example.uts_pm2.PrefsManager;
 import com.example.uts_pm2.R;
 import com.example.uts_pm2.database.DBConnect;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.chip.Chip;
-import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.datepicker.MaterialDatePicker;
-import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 public class CreateProject extends AppCompatActivity {
-
-    private TextView startDateTextView;
-    private TextView endDateTextView;
-    private DBConnect dbHelper;
+    private DBConnect dbConnect;
+    private TextInputEditText projectNameEditText, projectDescriptionEditText,deadlineEditText;
+    private String endDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_project);
-        applyFullScreenMode();
 
-        dbHelper = new DBConnect(this);
-
-        startDateTextView = findViewById(R.id.textStartDate);
-        endDateTextView = findViewById(R.id.textDueDate);
-
-        MaterialCardView startDateButton = findViewById(R.id.cardStartDate);
-        MaterialCardView endDateButton = findViewById(R.id.cardDueDate);
-
-        Calendar calendar = Calendar.getInstance();
-        Date today = calendar.getTime();
-
-        SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd, yyyy", Locale.ENGLISH);
-        String todayString = sdf.format(today);
-
-        startDateTextView.setText(todayString);
-        endDateTextView.setText(todayString);
-
-
-        startDateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDatePicker(true);
-            }
-        });
-
-        endDateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDatePicker(false);
-            }
-        });
+        dbConnect = new DBConnect(this);
 
         MaterialButton buttonAddProject = findViewById(R.id.buttonCreateProject);
-        buttonAddProject.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addProject();
-            }
-        });
+        buttonAddProject.setOnClickListener(view -> addProject());
 
         MaterialToolbar toolbar = findViewById(R.id.topAppBarCreateProject);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        toolbar.setNavigationOnClickListener(view -> finish());
+
+        deadlineEditText = findViewById(R.id.deadlineEdtText);
+        deadlineEditText.setOnClickListener(view -> showDatePicker());
     }
 
-    private void showDatePicker(boolean isStartDate) {
-        MaterialDatePicker.Builder<Long> builder = MaterialDatePicker.Builder.datePicker();
-        builder.setTitleText(isStartDate ? "Select Start Date" : "Select Due Date");
+    private void showDatePicker() {
+        MaterialDatePicker<Long> datePicker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Select end date")
+                .build();
 
-        final MaterialDatePicker<Long> datePicker = builder.build();
-        datePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener<Long>() {
-            @Override
-            public void onPositiveButtonClick(Long selection) {
-                Date date = new Date(selection);
-                SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd, yyyy", Locale.ENGLISH);
-                String dateString = sdf.format(date);
-
-                if (isStartDate) {
-                    startDateTextView.setText(dateString);
-                } else {
-                    endDateTextView.setText(dateString);
-                }
-            }
+        datePicker.addOnPositiveButtonClickListener(selection -> {
+            SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd, yyyy", Locale.ENGLISH);
+            endDate = sdf.format(selection);
+            deadlineEditText.setText(endDate);
         });
 
-        datePicker.show(getSupportFragmentManager(), datePicker.toString());
+        datePicker.show(getSupportFragmentManager(), "DATE_PICKER");
     }
 
-    private void addProject(){
-        TextInputLayout projectNameLayout = findViewById(R.id.edtProjectName);
-        TextInputLayout projectDescriptionLayout = findViewById(R.id.edtProjectDescription);
-        ChipGroup chipGroup = findViewById(R.id.chipGroup);
+    private void addProject() {
+        projectNameEditText = findViewById(R.id.edtProjectName);
+        projectDescriptionEditText = findViewById(R.id.edtProjectDescription);
 
-        EditText projectNameEditText = projectNameLayout.getEditText();
-        EditText projectDescriptionEditText = projectDescriptionLayout.getEditText();
+        PrefsManager prefsManager = new PrefsManager(this);
 
+        int userId  = prefsManager.getUserId();
         String projectName = projectNameEditText.getText().toString();
         String projectDescription = projectDescriptionEditText.getText().toString();
 
-        Chip selectedChip = (Chip) findViewById(chipGroup.getCheckedChipId());
-        String projectStatus = selectedChip != null ? selectedChip.getText().toString() : "";
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd, yyyy", Locale.ENGLISH);
+        String startDate = sdf.format(calendar.getTime());
 
-        String startDate = startDateTextView.getText().toString();
-        String endDate = endDateTextView.getText().toString();
-
-        if(projectName.isEmpty() || projectDescription.isEmpty()) {
-            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
-        } else if (projectStatus.isEmpty()) {
-            Toast.makeText(this, "Please select a project status", Toast.LENGTH_SHORT).show();
-        } else if(startDate.isEmpty() || endDate.isEmpty()) {
-            Toast.makeText(this, "Please select a start and end date", Toast.LENGTH_SHORT).show();
-        } else{
-            dbHelper.insertProject(projectName, projectDescription, startDate, endDate);
+        if (projectName.isEmpty()) {
+            projectNameEditText.setError("Please enter a project name");
+        } else if (projectDescription.isEmpty()) {
+            projectDescriptionEditText.setError("Please enter a project description");
+        } else if (endDate == null || endDate.isEmpty()) {
+            Toast.makeText(this, "Please select an end date", Toast.LENGTH_SHORT).show();
+        } else {
+            dbConnect.insertProject(userId, projectName, projectDescription, startDate, endDate);
             Toast.makeText(this, "Project added successfully", Toast.LENGTH_SHORT).show();
 
             finish();
-        }
-    }
-
-    private void applyFullScreenMode() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            getWindow().getDecorView().getWindowInsetsController().hide(
-                    android.view.WindowInsets.Type.navigationBars()
-            );
-            getWindow().getDecorView().getWindowInsetsController().setSystemBarsBehavior(
-                    android.view.WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-            );
-        } else {
-            getWindow().getDecorView().setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-            );
         }
     }
 }

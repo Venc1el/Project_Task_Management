@@ -2,6 +2,7 @@
     <style name="AppTheme" parent="Theme.Material3.Dark.NoActionBar">
         <item name="colorPrimary">@color/md_theme_primary</item>
         <item name="colorPrimaryDark">@color/md_theme_background</item>
+        <item name="android:navigationBarColor">@color/md_theme_background</item>
         <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_primaryContainer</item>
         <item name="colorOnPrimaryContainer">@color/md_theme_onPrimaryContainer</item>
@@ -50,4 +51,14 @@
         <item name="android:fontFamily">@font/poppins</item>
     </style>
 
+    <style name="headlineText" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/md_theme_onSurface</item>
+    </style>
+
+    <style name="ShapeAppearance.MaterialComponents.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
 </resources>

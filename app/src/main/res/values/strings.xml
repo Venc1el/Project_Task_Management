@@ -2,5 +2,6 @@
     <string name="app_name">TProject</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_notifications">About Me</string>
+    <string name="deskripsi_profile">Hai! Saya Sudarmo Adi, seorang mahasiswa yang antusias dalam dunia pemrograman. Saya menguasai ReactJS, Laravel, ExpressJS, dan Java. Saat ini, saya sedang mengembangkan keterampilan saya melalui berbagai proyek menarik.</string>
 </resources>

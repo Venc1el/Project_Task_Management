@@ -1,0 +1,148 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:id="@+id/standard_bottom_sheet"
+        style="@style/Widget.Material3.BottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+            android:id="@+id/drag_handle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Bottom sheet contents -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Change Avatar"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/md_theme_onSurface"
+                android:layout_marginBottom="10dp" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:dividerColor="@color/md_theme_onSurface" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:columnCount="5">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/toon_1"
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:src="@drawable/toon_1"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/toon_2"
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:src="@drawable/toon_2"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/toon_3"
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:src="@drawable/toon_3"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/toon_4"
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:src="@drawable/toon_4"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/toon_5"
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:src="@drawable/toon_5"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/toon_6"
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:src="@drawable/toon_6"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/toon_7"
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:src="@drawable/toon_7"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/toon_8"
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:src="@drawable/toon_8"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/toon_9"
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:src="@drawable/toon_9"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/toon_10"
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:src="@drawable/toon_10"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center" />
+
+                </GridLayout>
+            </HorizontalScrollView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnUbah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ubah"
+                android:layout_marginTop="40dp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/md_theme_primary"
+                android:textColor="@color/md_theme_background"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</RelativeLayout>

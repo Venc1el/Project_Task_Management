@@ -13,6 +13,24 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
+            android:name=".ui.task.UpdateTask"
+            android:exported="false" />
+        <activity
+            android:name=".card_user"
+            android:exported="false" />
+        <activity
+            android:name=".ui.login.SignUp"
+            android:exported="false" />
+        <activity
+            android:name=".ui.login.Login"
+            android:exported="false" />
+        <activity
+            android:name=".ui.project.UpdateProject"
+            android:exported="false" />
+        <activity
+            android:name=".ui.task.AddingTask"
+            android:exported="false" />
+        <activity
             android:name=".ui.task.DetailTask"
             android:exported="false" />
         <activity
@@ -34,6 +52,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

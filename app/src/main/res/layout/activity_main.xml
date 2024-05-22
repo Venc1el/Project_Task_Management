@@ -19,8 +19,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="0dp"
-        android:background="?android:attr/windowBackground"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/background_bottom_nav"
+        android:elevation="1dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        app:labelVisibilityMode="unlabeled"
+        style="@style/Widget.MaterialComponents.BottomNavigationView"
         app:menu="@menu/bottom_nav_menu" />
 
 </RelativeLayout>

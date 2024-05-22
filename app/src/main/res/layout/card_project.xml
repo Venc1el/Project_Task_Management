@@ -60,7 +60,7 @@
             app:layout_constraintStart_toEndOf="@id/assignedByLabel"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/taskImage"
+            android:id="@+id/imageAvatar"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:src="@drawable/toon_5"

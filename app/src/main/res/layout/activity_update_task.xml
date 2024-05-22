@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingVertical="10dp"
+    android:paddingHorizontal="20dp"
+    tools:context=".ui.task.UpdateTask">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBarUpdateTask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Update Task"
+            app:titleTextAppearance="@style/headlineText"
+            app:titleCentered="true"
+            app:titleTextColor="@color/md_theme_onSurface"
+            app:navigationIcon="@drawable/arrow_sm_left_svgrepo_com" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Task Priority"
+        android:textColor="@color/md_theme_onSurface"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fillViewport="true">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleSelection="true"
+            app:singleLine="true">
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="High"
+                app:chipStartPadding="15dp"
+                app:chipEndPadding="15dp"
+                android:clickable="true"
+                app:chipBackgroundColor="@color/chip_background_color_selector"
+                android:textColor="@color/chip_text_color"
+                app:chipCornerRadius="20dp"
+                style="@style/Widget.Material3.Chip.Suggestion.Elevated"/>
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medium"
+                app:chipStartPadding="15dp"
+                app:chipEndPadding="15dp"
+                android:clickable="true"
+                app:chipBackgroundColor="@color/chip_background_color_selector"
+                android:textColor="@color/chip_text_color"
+                app:chipCornerRadius="20dp"
+                style="@style/Widget.Material3.Chip.Suggestion.Elevated"/>
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Low"
+                app:chipStartPadding="15dp"
+                app:chipEndPadding="15dp"
+                android:clickable="true"
+                app:chipBackgroundColor="@color/chip_background_color_selector"
+                android:textColor="@color/chip_text_color"
+                app:chipCornerRadius="20dp"
+                style="@style/Widget.Material3.Chip.Suggestion.Elevated"/>
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Critical"
+                app:chipStartPadding="15dp"
+                app:chipEndPadding="15dp"
+                android:clickable="true"
+                app:chipBackgroundColor="@color/chip_background_color_selector"
+                android:textColor="@color/chip_text_color"
+                app:chipCornerRadius="20dp"
+                style="@style/Widget.Material3.Chip.Suggestion.Elevated"/>
+
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Task Name"
+        android:textColor="@color/md_theme_onSurface"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtTaskNameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Task Name"
+        app:boxStrokeWidth="0dp"
+        app:boxBackgroundColor="@macro/m3_comp_elevated_card_container_color"
+        android:elevation="@dimen/m3_card_elevated_elevation"
+        android:layout_marginTop="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtTaskName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Task Description"
+        android:textColor="@color/md_theme_onSurface"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtTaskDescriptionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Task Description"
+        app:boxStrokeWidth="0dp"
+        app:boxBackgroundColor="@macro/m3_comp_elevated_card_container_color"
+        android:elevation="@dimen/m3_card_elevated_elevation"
+        android:layout_marginTop="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtTaskDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:minLines="1"
+            android:maxLines="5" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnUpdateTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Task"
+        android:textColor="@color/md_theme_background"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
+
+</LinearLayout>
